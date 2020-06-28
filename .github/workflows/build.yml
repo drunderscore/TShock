@@ -64,3 +64,7 @@ jobs:
       with:
         name: Experimental (not debug) OTAPI Bootstrapper
         path: .\TerrariaServerAPI\TShock.Modifications.Bootstrapper\bin\Release\TShock.Modifications.Bootstrapper.exe
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
