@@ -5,7 +5,7 @@
 Server <-> Client
 
 ## Structure
-| Description | Type |
-|-------------|------|
-| NPC ID    | short |
-| Player ID | byte |
+| Description | Type  |
+|-------------|-------|
+| NPC ID      | short |
+| Player ID   | byte  |

@@ -5,7 +5,7 @@
 Server <-> Client
 
 ## Structure
-| Description | Type |
-|-------------|------|
+| Description   | Type  |
+|---------------|-------|
 | Projectile ID | short |
-| Owner         | byte |
+| Owner         | byte  |

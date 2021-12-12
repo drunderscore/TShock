@@ -5,13 +5,13 @@
 Server <-> Client
 
 ## Structure
-| Description | Type |
-|-------------|------|
-| Chest ID    | short |
-| Chest X     | short |
-| Chest Y     | short |
-| Name Length | byte |
-| Name[^1]     | [[String]] |
+| Description | Type       |
+|-------------|------------|
+| Chest ID    | short      |
+| Chest X     | short      |
+| Chest Y     | short      |
+| Name Length | byte       |
+| Name[^1]    | [[String]] |
 
 [^1]: Only present if `Name Length >= 0 && <= 20`
 

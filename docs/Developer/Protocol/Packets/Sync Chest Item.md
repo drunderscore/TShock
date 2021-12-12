@@ -5,10 +5,10 @@
 Server <-> Client
 
 ## Structure
-| Description | Type |
-|-------------|------|
+| Description          | Type  |
+|----------------------|-------|
 | Chest ID             | short |
-| Item [[Slots\|Slot]] | byte |
+| Item [[Slots\|Slot]] | byte  |
 | Stack                | short |
-| Prefix               | byte |
+| Prefix               | byte  |
 | Item ID              | short |

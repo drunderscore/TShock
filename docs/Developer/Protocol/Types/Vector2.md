@@ -1,4 +1,4 @@
-| Description | Type |
-|-------------|------|
-| X | float |
-| Y | float |
+| Description | Type  |
+|-------------|-------|
+| X           | float |
+| Y           | float |

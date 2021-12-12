@@ -5,10 +5,10 @@
 Server <-> Client
 
 ## Structure
-| Description | Type |
-|-------------|------|
+| Description   | Type  |
+|---------------|-------|
 | NPC ID        | short |
 | Damage        | short |
 | Knockback     | float |
-| Hit Direction | byte |
-| Crit          | byte |
+| Hit Direction | byte  |
+| Crit          | byte  |

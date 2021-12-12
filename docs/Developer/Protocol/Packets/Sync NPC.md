@@ -5,27 +5,27 @@
 Server -> Client
 
 ## Structure
-| Description | Type |
-|-------------|------|
-| NPC ID                               | short |
-| Position                             | [[Vector2]] |
-| Velocity                             | [[Vector2]] |
-| [[#Bitfield 1]]                      | byte |
-| [[#Bitfield 2]]                      | byte |
-| AI 1[^1]                              | float |
-| AI 2[^1]                              | float |
-| AI 3[^1]                              | float |
-| AI 4[^1]                              | float |
-| Type                                 | short |
-| Scale Stats for This Many Players[^2] | byte |
-| Strength Multiplier[^3]               | float |
-| Health Size[^4]                       | byte |
-| Health[^4][^5]                       | sbyte or short or int |
-| Release Owner[^6]                     | byte |
+| Description                           | Type                  |
+|---------------------------------------|-----------------------|
+| NPC ID                                | short                 |
+| Position                              | [[Vector2]]           |
+| Velocity                              | [[Vector2]]           |
+| [[#Bitfield 1]]                       | byte                  |
+| [[#Bitfield 2]]                       | byte                  |
+| AI 1[^1]                              | float                 |
+| AI 2[^1]                              | float                 |
+| AI 3[^1]                              | float                 |
+| AI 4[^1]                              | float                 |
+| Type                                  | short                 |
+| Scale Stats for This Many Players[^2] | byte                  |
+| Strength Multiplier[^3]               | float                 |
+| Health Size[^4]                       | byte                  |
+| Health[^4][^5]                        | sbyte or short or int |
+| Release Owner[^6]                     | byte                  |
 
 ### Bitfield 1
-| Description | Value |
-|-------------|------|
+| Description      | Value    |
+|------------------|----------|
 | Direction        | `1 << 0` |
 | Direction Y      | `1 << 1` |
 | Has AI 1         | `1 << 2` |
@@ -36,8 +36,8 @@ Server -> Client
 | Is at Max Health | `1 << 7` |
 
 ### Bitfield 2
-| Description | Value |
-|-------------|------|
+| Description                            | Value    |
+|----------------------------------------|----------|
 | Has Scaled Stats for This Many Players | `1 << 0` |
 | Spawned From Statue                    | `1 << 1` |
 | Has Strength Multiplier                | `1 << 2` |
