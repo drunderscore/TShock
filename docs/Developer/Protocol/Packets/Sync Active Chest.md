@@ -16,4 +16,4 @@ Server <-> Client
 [^1]: Only present if `Name Length >= 0 && <= 20`
 
 ### Description
-A `Name Length` of 255 if used to specify removing a chest's name.
+A `Name Length` of 255 is used to specify removing a chest's name.
