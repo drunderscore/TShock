@@ -4,10 +4,10 @@ Unless otherwise specified, all data types are little-endian ordered.
 ## Sending Packets Across the Network
 When packets are actually written and read, they are prefixed with their length and ID.
 
-| Description | Type |
-|-------------|------|
-| Length      | ushort |
-| Packet ID   | byte |
+| Description | Type               |
+|-------------|--------------------|
+| Length      | ushort             |
+| Packet ID   | byte               |
 | Data        | `byte[Length - 3]` |
 
 ## Connection Process

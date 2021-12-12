@@ -1,13 +1,13 @@
-| Description | Type |
-|-------------|------|
-| [[#Flags]]         | byte |
-| Player ID[^1]       | byte |
-| NPC ID[^2]          | short |
-| Projectile ID[^3]   | short |
-| Other[^4]           | byte |
-| Projectile Type[^5] | short |
-| Item Type[^6]       | short |
-| Item Prefix[^7]     | byte |
+| Description         | Type       |
+|---------------------|------------|
+| [[#Flags]]          | byte       |
+| Player ID[^1]       | byte       |
+| NPC ID[^2]          | short      |
+| Projectile ID[^3]   | short      |
+| Other[^4]           | byte       |
+| Projectile Type[^5] | short      |
+| Item Type[^6]       | short      |
+| Item Prefix[^7]     | byte       |
 | Custom Reason[^8]   | [[String]] |
 
 [^1]: Only present if `Has Player` bit is set on [[#Flags]]
@@ -20,8 +20,8 @@
 [^8]: Only present if `Has Custom Reason` bit is set on [[#Flags]]
 
 ##### Flags
-| Description | Value |
-|-------------|------|
+| Description         | Value    |
+|---------------------|----------|
 | Has Player          | `1 << 0` |
 | Has NPC             | `1 << 1` |
 | Has Projectile      | `1 << 2` |

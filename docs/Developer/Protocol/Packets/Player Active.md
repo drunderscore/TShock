@@ -7,8 +7,8 @@ Server -> Client
 ### Structure
 | Description | Type |
 |-------------|------|
-| Player ID | byte |
-| Active    | bool |
+| Player ID   | byte |
+| Active      | bool |
 
 ###### Description
 

@@ -5,9 +5,9 @@
 Server <-> Client[^1]
 
 ### Structure
-| Description | Type |
-|-------------|------|
-| Player ID       | byte |
+| Description     | Type  |
+|-----------------|-------|
+| Player ID       | byte  |
 | [[Slots\|Slot]] | short |
 | Item Stack      | short |
 | Item Prefix     | sbyte |

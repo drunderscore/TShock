@@ -7,5 +7,5 @@ Server <-> Client
 ### Structure
 | Description | Type |
 |-------------|------|
-| Player ID | byte |
-| Enabled   | bool |
+| Player ID   | byte |
+| Enabled     | bool |

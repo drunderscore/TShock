@@ -5,6 +5,6 @@
 Server -> Client
 
 ### Structure
-| Description | Type |
-|-------------|------|
-| Reason | [[Network Text]] |
+| Description | Type             |
+|-------------|------------------|
+| Reason      | [[Network Text]] |
