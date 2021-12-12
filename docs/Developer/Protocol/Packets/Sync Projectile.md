@@ -1,10 +1,10 @@
-###### ID
+## ID
 27
 
-###### Direction
+## ID
 Server <-> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | ID                         | short |
@@ -21,7 +21,7 @@ Server <-> Client
 | Original Damage[^5]         | bruh |
 | UUID[^6]                    | bruh |
 
-###### Flags
+### Flags
 | Description | Value |
 |-------------|------|
 | Has AI 1                    | `1 << 0` |

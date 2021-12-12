@@ -1,10 +1,10 @@
-###### ID
+## ID
 13
 
-###### Direction
+## ID
 Server <-> Client[^1]
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | Player ID                             | byte |
@@ -18,7 +18,7 @@ Server <-> Client[^1]
 | Potion of Return Original Position[^3] | [[Vector2]] |
 | Potion of Return Home Position[^3]     | [[Vector2]] |
 
-###### Controls
+### Controls
 | Description | Value |
 |-------------|------|
 | Up        | `1 << 0` |
@@ -29,7 +29,7 @@ Server <-> Client[^1]
 | Use Item  | `1 << 5` |
 | Direction | `1 << 6` |
 
-###### Bitfield 2
+### Bitfield 2
 | Description | Value |
 |-------------|------|
 | Has Pulley            | `1 << 0` |
@@ -40,7 +40,7 @@ Server <-> Client[^1]
 | Should Shield Guard   | `1 << 5` |
 | Ghost                 | `1 << 6` |
 
-###### Bitfield 3
+### Bitfield 3
 | Description | Value |
 |-------------|------|
 | Try Keeping Hoverboard Up   | `1 << 0` |
@@ -52,7 +52,7 @@ Server <-> Client[^1]
 | Has Potion of Return Data   | `1 << 6` |
 | Try Keeping Hoverboard Down | `1 << 7` |
 
-###### Bitfield 4
+### Bitfield 4
 | Description | Value |
 |-------------|------|
 | Is Sleeping | `1 << 0` |

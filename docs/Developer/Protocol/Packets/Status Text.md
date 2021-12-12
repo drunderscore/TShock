@@ -1,10 +1,10 @@
-###### ID
+## ID
 9
 
-###### Direction
+## ID
 Server -> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | Status Max  | byte |

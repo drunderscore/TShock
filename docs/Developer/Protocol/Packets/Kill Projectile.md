@@ -1,10 +1,10 @@
-###### ID
+## ID
 29
 
-###### Direction
+## ID
 Server <-> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | Projectile ID | short |

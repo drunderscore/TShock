@@ -1,10 +1,10 @@
-###### ID
+## ID
 1
 
-###### Direction
+## ID
 Client -> Server
 
-### Structure
+## Structure
 | Description | Type       |
 |-------------|------------|
 | Version[^1] | [[String]] |

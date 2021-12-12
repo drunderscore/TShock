@@ -1,10 +1,10 @@
-###### ID
+## ID
 23
 
-###### Direction
+## ID
 Server -> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | NPC ID                               | short |
@@ -23,7 +23,7 @@ Server -> Client
 | Health[^4][^5]                       | sbyte or short or int |
 | Release Owner[^6]                     | byte |
 
-###### Bitfield 1
+### Bitfield 1
 | Description | Value |
 |-------------|------|
 | Direction        | `1 << 0` |
@@ -35,7 +35,7 @@ Server -> Client
 | Sprite Direction | `1 << 6` |
 | Is at Max Health | `1 << 7` |
 
-###### Bitfield 2
+### Bitfield 2
 | Description | Value |
 |-------------|------|
 | Has Scaled Stats for This Many Players | `1 << 0` |

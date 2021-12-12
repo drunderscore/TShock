@@ -1,10 +1,10 @@
-###### ID
+## ID
 20
 
-###### Direction
+## ID
 Server <-> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | Starting X  | short |
@@ -14,7 +14,7 @@ Server <-> Client
 | Change Type | byte |
 | Tiles       | [[#Tiles]]
 
-###### Tiles
+### Tiles
 For `Width * Height` tiles, **x by y**:
 
 | Description | Type |
@@ -30,7 +30,7 @@ For `Width * Height` tiles, **x by y**:
 | Liquid Amount[^6] | byte |
 | Liquid Type[^6]   | byte |
 
-###### Header  1
+### Header  1
 | Description | Value |
 |-------------|-------|
 | Has Block     | `1 << 0` |
@@ -41,7 +41,7 @@ For `Width * Height` tiles, **x by y**:
 | Has Actuator  | `1 << 6` |
 | Is Actuated   | `1 << 7` |
 
-###### Header  2
+### Header  2
 | Description | Value |
 |-------------|-------|
 | Has Blue Wire      | `1 << 0` |

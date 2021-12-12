@@ -1,10 +1,10 @@
-###### ID
+## ID
 18
 
-###### Direction
+## ID
 Server -> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | Day Time   | bool |

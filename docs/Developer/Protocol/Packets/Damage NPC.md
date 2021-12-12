@@ -1,10 +1,10 @@
-###### ID
+## ID
 28
 
-###### Direction
+## ID
 Server <-> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | NPC ID        | short |

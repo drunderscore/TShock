@@ -1,10 +1,10 @@
-###### ID
+## ID
 17
 
-###### Direction
+## ID
 Server <-> Client
 
-### Structure
+## Structure
 | Description | Type  |
 |-------------|-------|
 | [[#Action]] | byte  |

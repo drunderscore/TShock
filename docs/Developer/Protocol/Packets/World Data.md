@@ -1,10 +1,10 @@
-###### ID
+## ID
 7
 
-###### Direction
+## ID
 Server -> Client
 
-### Structure
+## Structure
 | Description                 | Type           |
 |-----------------------------|----------------|
 | Time                        | int            |

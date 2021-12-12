@@ -1,10 +1,10 @@
-###### ID
+## ID
 22
 
-###### Direction
+## ID
 Server <-> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | Item ID   | short |

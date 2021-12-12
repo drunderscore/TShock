@@ -1,10 +1,10 @@
-###### ID
+## ID
 33
 
-###### Direction
+## ID
 Server <-> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | Chest ID    | short |
@@ -15,5 +15,5 @@ Server <-> Client
 
 [^1]: Only present if `Name Length >= 0 && <= 20`
 
-###### Description
+### Description
 A `Name Length` of 255 if used to specify removing a chest's name.

@@ -1,10 +1,10 @@
-###### ID
+## ID
 19
 
-###### Direction
+## ID
 Server <-> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | Action[^1] | byte |
@@ -12,7 +12,7 @@ Server <-> Client
 | Tile Y    | short |
 | Direction | byte |
 
-###### Action
+### Action
 | Description | Value |
 |-------------|------|
 | Open Door       | 0 |

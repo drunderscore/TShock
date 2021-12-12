@@ -1,10 +1,10 @@
-###### ID
+## ID
 118
 
-###### Direction
+## ID
 Server <-> Client
 
-### Structure
+## Structure
 | Description   | Type                    |
 |---------------|-------------------------|
 | Player ID[^1] | byte                    |

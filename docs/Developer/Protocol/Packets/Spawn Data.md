@@ -1,10 +1,10 @@
-###### ID
+## ID
 8
 
-###### Direction
+## ID
 Client -> Server
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | X[^1]       | int  |

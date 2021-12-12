@@ -1,10 +1,10 @@
-###### ID
+## ID
 2
 
-###### Direction
+## ID
 Server -> Client
 
-### Structure
+## Structure
 | Description | Type             |
 |-------------|------------------|
 | Reason      | [[Network Text]] |

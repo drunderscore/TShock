@@ -1,10 +1,10 @@
-###### ID
+## ID
 4
 
-###### Direction
+## ID
 Server <-> Client[^1]
 
-### Structure
+## Structure
 | Description           | Type       |
 |-----------------------|------------|
 | Player ID             | byte       |
@@ -24,7 +24,7 @@ Server <-> Client[^1]
 | [[#Difficulty Flags]] | byte       |
 | [[#Torch Flags]]      | byte       |
 
-###### Difficulty Flags
+### Difficulty Flags
 | Description               | Value    |
 |---------------------------|----------|
 | Softcore                  | `1 << 0` |
@@ -32,7 +32,7 @@ Server <-> Client[^1]
 | Has Expert Accessory Slot | `1 << 2` |
 | Hardcore                  | `1 << 3` |
 
-###### Torch Flags
+### Torch Flags
 | Description            | Value    |
 |------------------------|----------|
 | Using Biome Torches    | `1 << 0` |

@@ -1,10 +1,10 @@
-###### ID
+## ID
 68
 
-###### Direction
+## ID
 Client -> Server
 
-### Structure
+## Structure
 | Description | Type       |
 |-------------|------------|
 | UUID[^1]    | [[String]] |

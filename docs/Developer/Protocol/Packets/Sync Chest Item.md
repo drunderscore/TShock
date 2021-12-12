@@ -1,10 +1,10 @@
-###### ID
+## ID
 32
 
-###### Direction
+## ID
 Server <-> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | Chest ID             | short |

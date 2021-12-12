@@ -1,10 +1,10 @@
-###### ID
+## ID
 34
 
-###### Direction
+## ID
 Server <-> Client
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | [[#Action]] | byte |
@@ -13,7 +13,7 @@ Server <-> Client
 | Style       | short |
 | Chest ID[^1] | short |
 
-###### Action
+### Action
 | Description | Value |
 |-------------|------|
 | Place Chest       | 1 |

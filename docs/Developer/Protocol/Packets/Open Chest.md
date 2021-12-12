@@ -1,10 +1,10 @@
-###### ID
+## ID
 31
 
-###### Direction
+## ID
 Client -> Server
 
-### Structure
+## Structure
 | Description | Type |
 |-------------|------|
 | Tile X | short |
