@@ -58,6 +58,13 @@ For `Width * Height` tiles, **y by x**:
 | Has Extended Block ID          | `1 << 5`      |
 | [[#Liquid Types\|Liquid Type]] | `0b0001'1000` |
 
+#### Liquid Types
+| Description | Value |
+|-------------|-------|
+| Water       | 1     |
+| Lava        | 2     |
+| Honey       | 3     |
+
 ### Header 2
 | Description        | Value         |
 |--------------------|---------------|
@@ -67,21 +74,6 @@ For `Width * Height` tiles, **y by x**:
 | Has Green Wire     | `1 << 3`      |
 | [[#Shapes\|Shape]] | `0b0111'0000` |
 
-### Header 3
-| Description          | Value    |
-|----------------------|----------|
-| Has Actuator         | `1 << 1` |
-| Is Actuated          | `1 << 2` |
-| Has Yellow Wire      | `1 << 5` |
-| Has Extended Wall ID | `1 << 6` |
-
-#### Liquid Types
-| Description | Value |
-|-------------|-------|
-| Water       | 1     |
-| Lava        | 2     |
-| Honey       | 3     |
-
 #### Shapes
 | Description  | Value |
 |--------------|-------|
@@ -90,3 +82,11 @@ For `Width * Height` tiles, **y by x**:
 | Top Left     | 3     |
 | Bottom Right | 4     |
 | Bottom Left  | 5     |
+
+### Header 3
+| Description          | Value    |
+|----------------------|----------|
+| Has Actuator         | `1 << 1` |
+| Is Actuated          | `1 << 2` |
+| Has Yellow Wire      | `1 << 5` |
+| Has Extended Wall ID | `1 << 6` |
