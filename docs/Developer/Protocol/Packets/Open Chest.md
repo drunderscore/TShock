@@ -1,7 +1,7 @@
 ## ID
 31
 
-## ID
+## Direction
 Client -> Server
 
 ## Structure

@@ -1,7 +1,7 @@
 ## ID
 10
 
-## ID
+## Direction
 Server -> Client
 
 ## Structure
