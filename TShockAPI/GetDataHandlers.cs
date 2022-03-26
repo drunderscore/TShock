@@ -80,19 +80,66 @@ namespace TShockAPI
 	{
 		private static Dictionary<PacketTypes, GetDataHandlerDelegate> GetDataHandlerDelegates;
 
-		public static int[] WhitelistBuffMaxTime;
+		public class BuffLimit
+		{
+			// How many ticks at the maximum a player can apply this to another player for.
+			public int MaxTicks { get; set; }
+			// Can this buff be added without the receiver being hostile (PvP)
+			public bool CanBeAddedWithoutHostile { get; set; }
+		}
+
+		public static BuffLimit[] AddPlayerBuffWhitelist;
 
 		public static void InitGetDataHandler()
 		{
-			#region Blacklists
+			// The Venom debuff is not in Main.pvpBuff, even though it can be applied through PvP by Venom Arrows.
+			Main.pvpBuff[BuffID.Venom] = true;
 
-			WhitelistBuffMaxTime = new int[Main.maxBuffTypes];
-			WhitelistBuffMaxTime[20] = 600;
-			WhitelistBuffMaxTime[0x18] = 1200;
-			WhitelistBuffMaxTime[0x1f] = 120;
-			WhitelistBuffMaxTime[0x27] = 420;
+			#region Whitelist
 
-			#endregion Blacklists
+			AddPlayerBuffWhitelist = new BuffLimit[Main.maxBuffTypes];
+			AddPlayerBuffWhitelist[BuffID.Poisoned] = new BuffLimit
+			{
+				MaxTicks = 60 * 10
+			};
+			AddPlayerBuffWhitelist[BuffID.OnFire] = new BuffLimit
+			{
+				MaxTicks = 60 * 20
+			};
+			AddPlayerBuffWhitelist[BuffID.Confused] = new BuffLimit
+			{
+				MaxTicks = 60 * 4
+			};
+			AddPlayerBuffWhitelist[BuffID.CursedInferno] = new BuffLimit
+			{
+				MaxTicks = 7 * 60
+			};
+			AddPlayerBuffWhitelist[BuffID.Wet] = new BuffLimit
+			{
+				MaxTicks = 60 * 30,
+				// The Water Gun can be shot at other players and inflict Wet while not in PvP
+				CanBeAddedWithoutHostile = true
+			};
+			AddPlayerBuffWhitelist[BuffID.Ichor] = new BuffLimit
+			{
+				MaxTicks = 60 * 20
+			};
+			AddPlayerBuffWhitelist[BuffID.Venom] = new BuffLimit
+			{
+				MaxTicks = 60 * 30
+			};
+			AddPlayerBuffWhitelist[BuffID.GelBalloonBuff] = new BuffLimit
+			{
+				MaxTicks = 60 * 30,
+				// The Sparkle Slime Balloon inflicts this while not in PvP
+				CanBeAddedWithoutHostile = true
+			};
+			AddPlayerBuffWhitelist[BuffID.Frostburn] = new BuffLimit
+			{
+				MaxTicks = 60 * 8
+			};
+
+			#endregion Whitelist
 
 			GetDataHandlerDelegates = new Dictionary<PacketTypes, GetDataHandlerDelegate>
 				{

@@ -1629,9 +1629,24 @@ namespace TShockAPI
 			int type = args.Type;
 			int time = args.Time;
 
+			if (id >= Main.maxPlayers)
+			{
+				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected player cap from {0}", args.Player.Name);
+				args.Handled = true;
+				return;
+			}
+
 			if (TShock.Players[id] == null)
 			{
-				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected null check");
+				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected null check from {0}", args.Player.Name);
+				args.Handled = true;
+				return;
+			}
+
+			if (type >= Main.maxBuffTypes)
+			{
+				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected invalid buff type {0}", args.Player.Name);
+				args.Player.SendData(PacketTypes.PlayerBuff, "", id);
 				args.Handled = true;
 				return;
 			}
@@ -1639,31 +1654,7 @@ namespace TShockAPI
 			if (args.Player.IsBeingDisabled())
 			{
 				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected disabled from {0}", args.Player.Name);
-				args.Player.SendData(PacketTypes.PlayerAddBuff, "", id);
-				args.Handled = true;
-				return;
-			}
-
-			if (id >= Main.maxPlayers)
-			{
-				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected player cap from {0}", args.Player.Name);
-				args.Player.SendData(PacketTypes.PlayerAddBuff, "", id);
-				args.Handled = true;
-				return;
-			}
-
-			if (!TShock.Players[id].TPlayer.hostile || !Main.pvpBuff[type])
-			{
-				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected hostile/pvp from {0}", args.Player.Name);
-				args.Player.SendData(PacketTypes.PlayerAddBuff, "", id);
-				args.Handled = true;
-				return;
-			}
-
-			if (!args.Player.IsInRange(TShock.Players[id].TileX, TShock.Players[id].TileY, 50))
-			{
-				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected range check from {0}", args.Player.Name);
-				args.Player.SendData(PacketTypes.PlayerAddBuff, "", id);
+				args.Player.SendData(PacketTypes.PlayerBuff, "", id);
 				args.Handled = true;
 				return;
 			}
@@ -1671,17 +1662,45 @@ namespace TShockAPI
 			if (args.Player.IsBouncerThrottled())
 			{
 				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected throttled from {0}", args.Player.Name);
-				args.Player.SendData(PacketTypes.PlayerAddBuff, "", id);
+				args.Player.SendData(PacketTypes.PlayerBuff, "", id);
 				args.Handled = true;
 				return;
 			}
 
-			if (WhitelistBuffMaxTime[type] > 0 && time <= WhitelistBuffMaxTime[type])
+			var targetPlayer = TShock.Players[id];
+			var buffLimit = AddPlayerBuffWhitelist[type];
+
+			if (!args.Player.IsInRange(targetPlayer.TileX, targetPlayer.TileY, 50))
 			{
-				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected buff time whitelists from {0}", args.Player.Name);
-				args.Handled = false;
+				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected range check from {0}", args.Player.Name);
+				args.Player.SendData(PacketTypes.PlayerBuff, "", id);
+				args.Handled = true;
 				return;
 			}
+
+			if (buffLimit == null)
+			{
+				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected non-whitelisted buff {0}", args.Player.Name);
+				args.Player.SendData(PacketTypes.PlayerBuff, "", id);
+				args.Handled = true;
+				return;
+			}
+
+			if (!buffLimit.CanBeAddedWithoutHostile && !targetPlayer.TPlayer.hostile)
+			{
+				TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected hostile/pvp from {0}", args.Player.Name);
+				args.Player.SendData(PacketTypes.PlayerBuff, "", id);
+				args.Handled = true;
+				return;
+			}
+
+		    if (time > buffLimit.MaxTicks)
+		    {
+                TShock.Log.ConsoleDebug("Bouncer / OnPlayerBuff rejected buff time whitelists from {0}", args.Player.Name);
+                args.Player.SendData(PacketTypes.PlayerBuff, "", id);
+                args.Handled = true;
+                return;
+		    }
 		}
 
 		/// <summary>Handles NPCAddBuff events.</summary>
