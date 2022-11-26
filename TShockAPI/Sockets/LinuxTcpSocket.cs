@@ -96,13 +96,15 @@ namespace TShockAPI.Sockets
 			{
 				tuple.Item1(tuple.Item2, this._connection.GetStream().EndRead(result));
 			}
-			catch (InvalidOperationException)
+			catch (InvalidOperationException e)
 			{
 				// This is common behaviour during client disconnects
+				TShock.Log.ConsoleError($"BeginRead threw an exception for client {_remoteAddress}: {e}");
 				((ISocket)this).Close();
 			}
 			catch (Exception ex)
 			{
+				TShock.Log.ConsoleError($"BeginRead threw an exception for client {_remoteAddress}: {ex}");
 				TShock.Log.Error(ex.ToString());
 			}
 		}
@@ -117,8 +119,9 @@ namespace TShockAPI.Sockets
 				this._connection.GetStream().EndWrite(result);
 				tuple.Item1(tuple.Item2);
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
+				TShock.Log.ConsoleError($"EndWrite threw an exception for client {_remoteAddress}, closing socket: {e}");
 				((ISocket)this).Close();
 			}
 		}
