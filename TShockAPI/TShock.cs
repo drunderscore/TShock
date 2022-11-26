@@ -45,6 +45,7 @@ using TShockAPI.Localization;
 using TShockAPI.Configuration;
 using Terraria.GameContent.Creative;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using TShockAPI.Modules;
 
 namespace TShockAPI
@@ -246,6 +247,15 @@ namespace TShockAPI
 		[SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands")]
 		public override void Initialize()
 		{
+			TaskScheduler.UnobservedTaskException += (sender, args) =>
+			{
+				// Let's assume we won't get any of these until after we get our Log initialized.
+				Log.ConsoleError("Task threw an exception and we did not observe it!");
+				Log.ConsoleError($"{args.Exception}");
+
+				args.SetObserved();
+			};
+
 			string logFilename;
 
 			OTAPI.Hooks.Netplay.CreateTcpListener += (sender, args) =>
