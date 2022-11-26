@@ -130,16 +130,33 @@ namespace TShockAPI.Sockets
 		void ISocket.AsyncSend(byte[] data, int offset, int size, SocketSendCallback callback, object state)
 		{
 			byte[] array = LegacyNetBufferPool.RequestBuffer(data, offset, size);
-			this._connection.GetStream().BeginWrite(array, 0, size, new AsyncCallback(this.SendCallback), new object[]
+			try
 			{
-				new Tuple<SocketSendCallback, object>(callback, state),
-				array
-			});
+				this._connection.GetStream().BeginWrite(array, 0, size, new AsyncCallback(this.SendCallback), new object[]
+				{
+					new Tuple<SocketSendCallback, object>(callback, state),
+					array
+				});
+			}
+			catch (Exception e)
+			{
+				TShock.Log.ConsoleError($"BeginWrite threw an exception for client {_remoteAddress}, closing socket: {e}");
+				((ISocket)this).Close();
+			}
 		}
 
 		void ISocket.AsyncReceive(byte[] data, int offset, int size, SocketReceiveCallback callback, object state)
 		{
-			this._connection.GetStream().BeginRead(data, offset, size, new AsyncCallback(this.ReadCallback), new Tuple<SocketReceiveCallback, object>(callback, state));
+			try
+			{
+				this._connection.GetStream().BeginRead(data, offset, size, new AsyncCallback(this.ReadCallback),
+					new Tuple<SocketReceiveCallback, object>(callback, state));
+			}
+			catch (Exception e)
+			{
+				TShock.Log.ConsoleError($"BeginRead threw an exception for client {_remoteAddress}: {e}");
+				((ISocket)this).Close();
+			}
 		}
 
 		bool ISocket.IsDataAvailable()
