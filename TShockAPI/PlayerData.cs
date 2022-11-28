@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using TShockAPI;
@@ -23,6 +24,7 @@ using Terraria.Localization;
 using Terraria.GameContent.NetModules;
 using Terraria.Net;
 using Terraria.ID;
+using TShockAPI.Net;
 
 namespace TShockAPI
 {
@@ -62,6 +64,7 @@ namespace TShockAPI
 		public int usedAmbrosia;
 		public int unlockedSuperCart;
 		public int enabledSuperCart;
+		public List<NetBuff> buffs = new();
 
 		public PlayerData(TSPlayer player)
 		{
@@ -247,6 +250,19 @@ namespace TShockAPI
 				{
 					var index = i - NetItem.Loadout3Dye.Item1;
 					this.inventory[i] = (NetItem)loadout3Dye[index];
+				}
+			}
+
+			if (TShock.ServerSideCharacterConfig.Settings.SaveAndRestoreBuffs)
+			{
+				buffs.Clear();
+				for (var i = 0; i < Player.maxBuffs; i++)
+				{
+					var type = (ushort)player.TPlayer.buffType[i];
+					var duration = (short)player.TPlayer.buffTime[i];
+
+					if (type != 0 && duration != 0)
+						buffs.Add(new NetBuff(type, duration));
 				}
 			}
 		}
@@ -667,15 +683,28 @@ namespace TShockAPI
 				slot++;
 			}
 
-
-
 			NetMessage.SendData(4, player.Index, -1, NetworkText.FromLiteral(player.Name), player.Index, 0f, 0f, 0f, 0);
 			NetMessage.SendData(42, player.Index, -1, NetworkText.Empty, player.Index, 0f, 0f, 0f, 0);
 			NetMessage.SendData(16, player.Index, -1, NetworkText.Empty, player.Index, 0f, 0f, 0f, 0);
 
-			for (int k = 0; k < Player.maxBuffs; k++)
+			// We need to clear all the player's buffs and sync that, to ensure no smuggling from the local character.
+			for (var i = 0; i < Player.maxBuffs; i++)
+				player.TPlayer.buffType[i] = 0;
+
+			NetMessage.SendData((int)PacketTypes.PlayerBuff, remoteClient: player.Index, number: player.Index);
+			NetMessage.SendData((int)PacketTypes.PlayerBuff, ignoreClient: player.Index, number: player.Index);
+
+			// If the server wants to save buffs to SSC, then we will restore them.
+			if (TShock.ServerSideCharacterConfig.Settings.SaveAndRestoreBuffs)
 			{
-				player.TPlayer.buffType[k] = 0;
+				foreach (var buff in buffs)
+				{
+					player.TPlayer.AddBuff(buff.Type, buff.Duration);
+					NetMessage.SendData((int)PacketTypes.PlayerAddBuff, remoteClient: player.Index, number: player.Index,
+						number2: buff.Type, number3: buff.Duration);
+					NetMessage.SendData((int)PacketTypes.PlayerAddBuff, ignoreClient: player.Index, number: player.Index,
+						number2: buff.Type, number3: buff.Duration);
+				}
 			}
 
 			/*
@@ -684,8 +713,6 @@ namespace TShockAPI
 			 * This is for when players login via uuid or serverpassword instead of via
 			 * the login command.
 			 */
-			NetMessage.SendData(50, -1, -1, NetworkText.Empty, player.Index, 0f, 0f, 0f, 0);
-			NetMessage.SendData(50, player.Index, -1, NetworkText.Empty, player.Index, 0f, 0f, 0f, 0);
 
 			NetMessage.SendData(76, player.Index, -1, NetworkText.Empty, player.Index);
 			NetMessage.SendData(76, -1, -1, NetworkText.Empty, player.Index);

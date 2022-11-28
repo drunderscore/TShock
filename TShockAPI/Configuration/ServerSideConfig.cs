@@ -72,6 +72,12 @@ namespace TShockAPI.Configuration
 		/// </summary>
 		[Description("Warns players and the console if a player has the tshock.ignore.ssc permission with data in the SSC table.")]
 		public bool WarnPlayersAboutBypassPermission = true;
+
+		/// <summary>
+		/// Whether or not that buffs should be saved and restored to players.
+		/// </summary>
+		[Description("Whether or not that buffs should be saved and restored to players.")]
+		public bool SaveAndRestoreBuffs = false;
 	}
 
 	/// <summary>
